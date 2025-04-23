@@ -1,0 +1,46 @@
+﻿@model IEnumerable<HonMain.Models.BookDetail>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+	<a asp-action="AddBook">Add New</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.BookName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Genre)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.AvailabilityStatus)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.BookName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Genre)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.AvailabilityStatus)
+				</td>
+				<td>
+					<a asp-action="DeleteBook" asp-route-id="@item.Id">Delete Book</a>
+				</td>
+			</tr>
+		}
+	
+</table>
+
